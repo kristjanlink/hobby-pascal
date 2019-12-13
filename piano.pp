@@ -12,6 +12,8 @@ repeat
   writeln('Press "q" for settings');
   writeln();
   writeln('AND MAKE SURE CAPSLOCK IS NOT TURNED ON OMG');
+  writeln();
+  writeln('Also, make sure System Sounds are not muted!');
   key := readkey;
   if key = 'a' then
     windows.beep(523, noteduration);
