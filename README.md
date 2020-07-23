@@ -7,3 +7,7 @@ OR
 Compile the exe at:
 
 http://www.onlinecompiler.net/pascal
+
+NB! Programs using mmsystem can't be compiled online. For this you can download Free Pascal at:
+
+https://www.freepascal.org/download.html
