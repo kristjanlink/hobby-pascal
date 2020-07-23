@@ -9,8 +9,10 @@ begin
 
     hours := formatDateTime('hh', time);
 
-    if hours < '10' then
+    if hours < '10' then begin
       sndPlaySound('t0.wav', snd_Async or snd_NoDefault);
+      delay(625);
+    end;
     if hours > '19' then begin
       sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
       delay(625);
