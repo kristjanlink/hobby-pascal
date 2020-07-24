@@ -48,7 +48,7 @@ begin
     end;
 
     mins := formatDateTime('nn', time);
-    delay(500); // The delay between saying hours and minutes
+    delay(625); // The delay between saying hours and minutes
 
     if mins < '10' then begin
       sndPlaySound('t0.wav', snd_Async or snd_NoDefault);
