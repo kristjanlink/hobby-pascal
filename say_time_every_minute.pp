@@ -8,6 +8,7 @@ begin
     writeln('The current time is: ', formatDateTime('hh:nn', time));
 
     hours := formatDateTime('hh', time);
+    mins := formatDateTime('nn', time);
 
     // A beautiful jingle plays
     sndPlaySound('time_is.wav', snd_Async or snd_NoDefault);
@@ -53,7 +54,6 @@ begin
       sndPlaySound('teen.wav', snd_Async or snd_NoDefault);
     end;
 
-    mins := formatDateTime('nn', time);
     delay(625); // The delay between saying hours and minutes
 
     if mins < '10' then begin
