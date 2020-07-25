@@ -6,10 +6,16 @@ var
 begin
   hours := formatDateTime('hh', time);
 
-  if hours < '10' then begin
+  // A beautiful jingle plays
+  sndPlaySound('time_is.wav', snd_Async or snd_NoDefault);
+  delay(4000);
+
+  // This bit is really not necessary
+{  if hours < '10' then begin
     sndPlaySound('t0.wav', snd_Async or snd_NoDefault);
     delay(625);
   end;
+}
   if hours > '19' then begin
     sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
     delay(625);

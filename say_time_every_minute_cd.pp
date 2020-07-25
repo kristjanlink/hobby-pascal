@@ -1,9 +1,13 @@
-program say_time_every_minute;
+program say_time_every_minute_cd;
 uses crt, mmsystem, sysutils;
 var
   mins, hours: string;
+  dlay: integer;
 
 begin
+  writeln('Enter delay in milliseconds to use between numbers');
+  readln(dlay);
+  clrscr;
   while true do begin
     writeln('The current time is: ', formatDateTime('hh:nn', time));
 
@@ -19,11 +23,12 @@ begin
       delay(625);
     end;
 }
+
     if hours > '19' then begin
       sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
-      delay(625);
+      delay(dlay);
       sndPlaySound('ty.wav', snd_Async or snd_NoDefault);
-      delay(625);
+      delay(dlay);
     end;
 
     if hours = '00' then
@@ -49,36 +54,36 @@ begin
     if hours = '10' then
       sndPlaySound('t10.wav', snd_Async or snd_NoDefault);
     if strToInt(hours) in [11..19] then begin
-      delay(625);
+      delay(dlay);
       sndPlaySound('teen.wav', snd_Async or snd_NoDefault);
     end;
 
     mins := formatDateTime('nn', time);
-    delay(625); // The delay between saying hours and minutes
+    delay(dlay); // The delay between saying hours and minutes
 
     if mins < '10' then begin
       sndPlaySound('t0.wav', snd_Async or snd_NoDefault);
-      delay(625);
+      delay(dlay);
     end;
     if strToInt(mins) in [20..29] then begin
       sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
-      delay(625);
+      delay(dlay);
     end;
     if strToInt(mins) in [30..39] then begin
       sndPlaySound('t3.wav', snd_Async or snd_NoDefault);
-      delay(625);
+      delay(dlay);
     end;
     if strToInt(mins) in [40..49] then begin
       sndPlaySound('t4.wav', snd_Async or snd_NoDefault);
-      delay(625);
+      delay(dlay);
     end;
     if strToInt(mins) in [50..59] then begin
       sndPlaySound('t5.wav', snd_Async or snd_NoDefault);
-      delay(625);
+      delay(dlay);
     end;
     if mins > '19' then begin
       sndPlaySound('ty.wav', snd_Async or snd_NoDefault);
-      delay(625);
+      delay(dlay);
     end;
 
     if mins = '00' then
@@ -104,7 +109,7 @@ begin
     if mins = '10' then
       sndPlaySound('t10.wav', snd_Async or snd_NoDefault);
     if strToInt(mins) in [11..19] then begin
-      delay(625);
+      delay(dlay);
       sndPlaySound('teen.wav', snd_Async or snd_NoDefault);
     end;
 
