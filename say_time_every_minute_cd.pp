@@ -113,14 +113,35 @@ begin
       sndPlaySound('teen.wav', snd_Async or snd_NoDefault);
     end;
 
-    gotoXY(24, 1);
     repeat
-      write(' ');
+      gotoXY(24, 1); // Go to colon char between hours and minutes
+      write(' '); // Overwrite colon char between hours and minutes
+      // Countdown before full minute block
+      if formatDateTime('ss', time) = '55' then
+      sndPlaySound('t5.wav', snd_Async or snd_NoDefault);
+      if formatDateTime('ss', time) = '56' then
+      sndPlaySound('t4.wav', snd_Async or snd_NoDefault);
+      if formatDateTime('ss', time) = '57' then
+      sndPlaySound('t3.wav', snd_Async or snd_NoDefault);
+      if formatDateTime('ss', time) = '58' then
+      sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
+      if formatDateTime('ss', time) = '59' then
+      sndPlaySound('t1.wav', snd_Async or snd_NoDefault);
       delay(1000);
-      gotoXY(24, 1);
-      write(':');
+      gotoXY(24, 1); // Go to space char between hours and minutes
+      write(':'); // Overwrite space char between hours and minutes
+      // Countdown before full minute block again because of the delay
+      if formatDateTime('ss', time) = '55' then
+      sndPlaySound('t5.wav', snd_Async or snd_NoDefault);
+      if formatDateTime('ss', time) = '56' then
+      sndPlaySound('t4.wav', snd_Async or snd_NoDefault);
+      if formatDateTime('ss', time) = '57' then
+      sndPlaySound('t3.wav', snd_Async or snd_NoDefault);
+      if formatDateTime('ss', time) = '58' then
+      sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
+      if formatDateTime('ss', time) = '59' then
+      sndPlaySound('t1.wav', snd_Async or snd_NoDefault);
       delay(1000);
-      gotoXY(24, 1);
     until formatDateTime('nn', time) <> mins;
     clrscr;
   end;
