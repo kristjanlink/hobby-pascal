@@ -11,8 +11,8 @@ begin
     mins := formatDateTime('nn', time);
 
     // A beautiful jingle plays
-    sndPlaySound('time_is.wav', snd_Async or snd_NoDefault);
-    delay(4000);
+    //sndPlaySound('time_is.wav', snd_Async or snd_NoDefault);
+    //delay(4000);
 
     // This bit is really not necessary
 {    if hours < '10' then begin
@@ -29,24 +29,9 @@ begin
 
     if hours = '00' then
       sndPlaySound('t0.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '1' then
-      sndPlaySound('t1.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '2' then
-      sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '3' then
-      sndPlaySound('t3.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '4' then
-      sndPlaySound('t4.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '5' then
-      sndPlaySound('t5.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '6' then
-      sndPlaySound('t6.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '7' then
-      sndPlaySound('t7.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '8' then
-      sndPlaySound('t8.wav', snd_Async or snd_NoDefault);
-    if rightStr(hours, 1) = '9' then
-      sndPlaySound('t9.wav', snd_Async or snd_NoDefault);
+    if strToInt(rightStr(hours, 1)) in [1..9] then
+      sndPlaySound(pChar('t' + rightStr(hours, 1) + '.wav'),
+      snd_Async or snd_NoDefault);
     if hours = '10' then
       sndPlaySound('t10.wav', snd_Async or snd_NoDefault);
     if strToInt(hours) in [11..19] then begin
@@ -83,25 +68,10 @@ begin
 
     if mins = '00' then
       sndPlaySound('t0.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '1' then
-      sndPlaySound('t1.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '2' then
-      sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '3' then
-      sndPlaySound('t3.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '4' then
-      sndPlaySound('t4.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '5' then
-      sndPlaySound('t5.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '6' then
-      sndPlaySound('t6.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '7' then
-      sndPlaySound('t7.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '8' then
-      sndPlaySound('t8.wav', snd_Async or snd_NoDefault);
-    if rightStr(mins, 1) = '9' then
-      sndPlaySound('t9.wav', snd_Async or snd_NoDefault);
-    if mins = '10' then
+    if strToInt(rightStr(mins, 1)) in [1..9] then
+      sndPlaySound(pChar('t' + rightStr(mins, 1) + '.wav'),
+      snd_Async or snd_NoDefault);
+    if hours = '10' then
       sndPlaySound('t10.wav', snd_Async or snd_NoDefault);
     if strToInt(mins) in [11..19] then begin
       delay(625);
@@ -112,6 +82,7 @@ begin
     repeat
       gotoXY(24, 1); // Go to colon char between hours and minutes
       write(' '); // Overwrite colon char between hours and minutes
+{
       // Countdown before full minute block
       if formatDateTime('ss', time) = '55' then
       sndPlaySound('t5.wav', snd_Async or snd_NoDefault);
@@ -123,9 +94,11 @@ begin
       sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
       if formatDateTime('ss', time) = '59' then
       sndPlaySound('t1.wav', snd_Async or snd_NoDefault);
+}
       delay(1000);
       gotoXY(24, 1); // Go to space char between hours and minutes
       write(':'); // Overwrite space char between hours and minutes
+{
       // Countdown before full minute block again because of the delay
       if formatDateTime('ss', time) = '55' then
       sndPlaySound('t5.wav', snd_Async or snd_NoDefault);
@@ -137,6 +110,7 @@ begin
       sndPlaySound('t2.wav', snd_Async or snd_NoDefault);
       if formatDateTime('ss', time) = '59' then
       sndPlaySound('t1.wav', snd_Async or snd_NoDefault);
+}
       delay(1000);
     until formatDateTime('nn', time) <> mins;
     clrscr;
